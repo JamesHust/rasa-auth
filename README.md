@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://user-images.githubusercontent.com/52951651/153158721-6b5af2d6-2482-40b5-8247-17983838f82f.svg" width="320" alt="FPT.AI Logo" /></a>
+  <a target="blank"><img src="https://user-images.githubusercontent.com/52951651/153158721-6b5af2d6-2482-40b5-8247-17983838f82f.svg" width="320" alt="FPT.AI Logo" /></a>
 </p>
 
   <p align="center">Project created with <a href="https://nestjs.com/" target="_blank">Nest.js</a> framework used to authenticate FPT.AI accounts.</p>
