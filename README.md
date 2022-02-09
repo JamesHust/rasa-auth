@@ -46,7 +46,7 @@ $ npm run test:cov
 
 ## Support
 
-Email. support@fpt.ai · Hotline. 1900 638 399
+Email: hungjame99@gmail.com · support@fpt.ai 
 
 ## Stay in touch
 
