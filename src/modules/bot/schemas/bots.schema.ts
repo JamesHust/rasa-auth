@@ -8,7 +8,7 @@ export const BotSchema = new Schema({
   author: {
     type: String,
     required: true,
-    default: ''
+    default: '',
   },
   createdAt: {
     type: Date,
