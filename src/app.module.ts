@@ -1,3 +1,5 @@
+import { UsersModule } from './modules/user/users.module';
+import { AuthModule } from './modules/auth/auth.module';
 import { BotsModule } from './modules/bot/bots.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -7,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    UsersModule,
+    AuthModule,
     BotsModule,
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
