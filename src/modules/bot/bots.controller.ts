@@ -6,6 +6,12 @@ import { CreateBotDTO } from './dto/bots.dto';
 export class BotsController {
     constructor(private botsService: BotsService) {}
 
+    /**
+     * API create a new bot
+     * @param res 
+     * @param createBotDTO 
+     * @returns 
+     */
     @Post()
     async createBot(@Res() res, @Body() createBotDTO: CreateBotDTO) {
         const newBot = await this.botsService.createBot(createBotDTO);
@@ -15,12 +21,21 @@ export class BotsController {
         })
     }
 
+    /**
+     * API get all of bots
+     * @param res 
+     */
     @Get()
     async getBots (@Res() res) {
         const products = await this.botsService.getBots();
         res.status(HttpStatus.OK).json(products)
     }
 
+    /**
+     * API get detail bot by id
+     * @param res 
+     * @param botId 
+     */
     @Get('/:botId')
     async getBotById (@Res() res, @Param('botId') botId) {
         const bot = await this.botsService.getBotById(botId);
@@ -28,6 +43,13 @@ export class BotsController {
         res.status(HttpStatus.OK).json(bot)
     }
 
+    /**
+     * API update bot 
+     * @param res 
+     * @param createBotDTO 
+     * @param botId 
+     * @returns 
+     */
     @Put()
     async updateBot(@Res() res, @Body() createBotDTO: CreateBotDTO, @Query('botId') botId) {
         const updatedBot = await this.botsService.updateBot(botId, createBotDTO);
@@ -38,6 +60,11 @@ export class BotsController {
         })
     }
 
+    /**
+     * API delete bot by id
+     * @param res 
+     * @param botId 
+     */
     @Delete('/:botId')
     async deleteBot (@Res() res, @Param('botId') botId) {
         const deleteBot = await this.botsService.deleteBot(botId);
