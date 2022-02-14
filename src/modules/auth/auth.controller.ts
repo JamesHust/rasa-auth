@@ -11,7 +11,9 @@ import {
   NotFoundException,
   Delete,
   UnauthorizedException,
+  UseGuards,
 } from '@nestjs/common';
+import { FptIdAuthGuard } from 'src/guards/auth.guard';
 // import { UsersService } from '../user/users.service';
 import { AuthService } from './auth.service';
 import { RequestTokenDto } from './dto/request.token.dto';
@@ -28,6 +30,7 @@ export class AuthController {
    * @param requestToken token sau khi FPT.ID xác thực và gửi lại cho FE
    */
   @Post('login')
+  @UseGuards(FptIdAuthGuard)
   async login(@Res() res, @Body() requestToken: RequestTokenDto) {
     const userInfo = await this.authService.getUserInfoFptId(requestToken);
     if (!userInfo) {
