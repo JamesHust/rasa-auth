@@ -30,6 +30,6 @@ import { UsersModule } from '../user/users.module';
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [PassportModule, JwtModule],
+  exports: [PassportModule, JwtModule ],
 })
 export class AuthModule {}

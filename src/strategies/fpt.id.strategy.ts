@@ -12,9 +12,9 @@ export class FptIdStrategy extends PassportStrategy(Strategy, 'fpt-id') {
     private readonly configService: ConfigService,
   ) {
     super({
-      authorizationURL: `${configService.get('FPT_ID_URL')}/authorize`,
-      tokenURL: `${configService.get('FPT_ID_URL')}/token/`,
-      scope: 'Openid profile',
+      authorizationURL: `${configService.get('FPT_ID_AUTH_URL')}/auth`,
+      tokenURL: `${configService.get('FPT_ID_AUTH_URL')}/token/`,
+      scope: 'openid email profile phone',
       clientID: configService.get('FPT_ID_CLIENT_ID'),
       clientSecret: configService.get('FPT_ID_CLIENT_SECRET'),
     });

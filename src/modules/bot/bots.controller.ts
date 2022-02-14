@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Put, Body, Param, Query, Res, HttpStatus, NotFoundException, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Param, Query, Res, HttpStatus, NotFoundException, Delete, UseGuards } from '@nestjs/common';
+import { JWTAuthGuard } from 'src/guards/auth.guard';
 import { BotsService } from './bots.service';
 import { CreateBotDTO } from './dto/bots.dto';
 
@@ -13,6 +14,7 @@ export class BotsController {
      * @returns 
      */
     @Post()
+    @UseGuards(JWTAuthGuard)
     async createBot(@Res() res, @Body() createBotDTO: CreateBotDTO) {
         const newBot = await this.botsService.createBot(createBotDTO);
         return res.status(HttpStatus.CREATED).json({
@@ -26,6 +28,7 @@ export class BotsController {
      * @param res 
      */
     @Get()
+    @UseGuards(JWTAuthGuard)
     async getBots (@Res() res) {
         const products = await this.botsService.getBots();
         res.status(HttpStatus.OK).json(products)
@@ -37,6 +40,7 @@ export class BotsController {
      * @param botId 
      */
     @Get('/:botId')
+    @UseGuards(JWTAuthGuard)
     async getBotById (@Res() res, @Param('botId') botId) {
         const bot = await this.botsService.getBotById(botId);
         if (!bot) throw new NotFoundException("Bot does not exists");
@@ -51,6 +55,7 @@ export class BotsController {
      * @returns 
      */
     @Put()
+    @UseGuards(JWTAuthGuard)
     async updateBot(@Res() res, @Body() createBotDTO: CreateBotDTO, @Query('botId') botId) {
         const updatedBot = await this.botsService.updateBot(botId, createBotDTO);
         if (!updatedBot) throw new NotFoundException("Bot does not exists");
@@ -66,6 +71,7 @@ export class BotsController {
      * @param botId 
      */
     @Delete('/:botId')
+    @UseGuards(JWTAuthGuard)
     async deleteBot (@Res() res, @Param('botId') botId) {
         const deleteBot = await this.botsService.deleteBot(botId);
         if (!deleteBot) throw new NotFoundException("Bot does not exists");
